@@ -124,11 +124,12 @@ gather_statistics(SvcName, Peer, S, Apps, Stats) ->
 			      {direction, Direction},
 			      {type, msg_type(Msg)},
 			      {msg, msg_name(Msg, Apps)}]], Cnt, S1);
-	 ({{Msg, Direction, {'Result-Code', _} = Result}, Cnt}, S1) ->
+	 ({{Msg, Direction, {'Result-Code', RC}}, Cnt}, S1) ->
 	      add([messages, [{svc, SvcName}, {peer, Peer},
 			      {direction, Direction},
 			      {type, msg_type(Msg)},
-			      {msg, msg_name(Msg, Apps)}, Result]], Cnt, S1);
+			      {msg, msg_name(Msg, Apps)},
+			      {rc, RC}]], Cnt, S1);
 	 (_, S1) ->
 	      S1
       end, Stats, S).
