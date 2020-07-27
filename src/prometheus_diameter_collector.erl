@@ -130,6 +130,12 @@ gather_statistics(SvcName, Peer, S, Apps, Stats) ->
 			      {type, msg_type(Msg)},
 			      {msg, msg_name(Msg, Apps)},
 			      {rc, RC}]], Cnt, S1);
+	 ({{Msg, Direction, Result}, Cnt}, S1) when is_atom(Result) ->
+	      add([messages, [{svc, SvcName}, {peer, Peer},
+			      {direction, Direction},
+			      {type, msg_type(Msg)},
+			      {msg, msg_name(Msg, Apps)},
+			      {rc, Result}]], Cnt, S1);
 	 (_, S1) ->
 	      S1
       end, Stats, S).
