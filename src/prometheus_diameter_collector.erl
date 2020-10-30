@@ -15,6 +15,7 @@
 -module(prometheus_diameter_collector).
 -behaviour(prometheus_collector).
 
+-include_lib("eunit/include/eunit.hrl").
 -include_lib("prometheus/include/prometheus.hrl").
 
 -export([
@@ -140,6 +141,8 @@ gather_statistics(SvcName, Peer, S, Apps, Stats) ->
 	      S1
       end, Stats, S).
 
+msg_type({_, 0}) -> answer;
+msg_type({_, 1}) -> request;
 msg_type({_, _, 0}) -> answer;
 msg_type({_, _, 1}) -> request.
 
@@ -172,4 +175,25 @@ msg_name({ApplId, _, _} = Cmd, Apps) ->
 	    try_dict(proplists:get_value(dictionary, App, undefined), Cmd);
 	_ ->
 	    Cmd
-    end.
+    end;
+msg_name(_, _Apps) -> 
+    unknown.
+
+-ifdef(EUNIT).
+
+%%%===================================================================
+%%% A small eunit test to verify the stat collection
+%%%===================================================================
+
+gather_statistics_test() ->
+    S = [{{{0,257,1},send},1},
+	 {{{unknown,0},recv,discarded},2618},
+	 {{{0,257,0},recv,{'Result-Code',2001}},1}],
+    R = #{messages => #{
+	[{svc,testsvc}, {peer,<<"testpeer">>}, {direction,recv}, {type,answer}, {msg,unknown}, {rc,discarded}] => 2618,
+	[{svc,testsvc}, {peer,<<"testpeer">>}, {direction,recv}, {type,answer}, {msg,{0,257,0}}, {rc,2001}] => 1,
+	[{svc,testsvc}, {peer,<<"testpeer">>}, {direction,send}, {type,request},{msg,{0,257,1}}] => 1
+    }},
+    R = gather_statistics(testsvc, <<"testpeer">>, S, [], #{}).
+
+-endif.
