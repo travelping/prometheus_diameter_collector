@@ -17,4 +17,4 @@ before_script:
 script:
   - ./rebar3 compile
   - ./rebar3 xref
-  - ./rebar3 eunit
+  - ./rebar3 ct
