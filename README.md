@@ -30,7 +30,7 @@ Number of requests.
 
 ## License
 
-MIT
+[Apache 2.0](LICENSE)
 
 <!-- Badges -->
 [travis]: https://travis-ci.com/travelping/prometheus_diameter_collector
