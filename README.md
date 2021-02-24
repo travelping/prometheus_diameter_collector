@@ -2,6 +2,7 @@ DIAMETER Prometheus.io collector
 ================================
 [![Hex.pm Version][hexpm version]][hexpm]
 [![Hex.pm Downloads][hexpm downloads]][hexpm]
+[![Coverage Status][coveralls badge]][coveralls]
 [![Build Status][gh badge]][gh]
 [![Erlang Versions][erlang version badge]][gh]
 
@@ -39,6 +40,8 @@ Number of requests.
 [hexpm]: https://hex.pm/packages/prometheus_diameter_collector
 [hexpm version]: https://img.shields.io/hexpm/v/prometheus_diameter_collector.svg?style=flat
 [hexpm downloads]: https://img.shields.io/hexpm/dt/prometheus_diameter_collector.svg?style=flat
+[coveralls]: https://coveralls.io/github/travelping/prometheus_diameter_collector
+[coveralls badge]: https://img.shields.io/coveralls/travelping/prometheus_diameter_collector/master.svg?style=flat-square
 [gh]: https://github.com/travelping/prometheus_diameter_collector/actions/workflows/main.yml
 [gh badge]: https://img.shields.io/github/workflow/status/travelping/prometheus_diameter_collector/CI?style=flat-square
 [erlang version badge]: https://img.shields.io/badge/erlang-R22.0%20to%2023.2-blue.svg?style=flat-square
