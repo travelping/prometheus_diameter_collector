@@ -44,4 +44,4 @@ Number of requests.
 [coveralls badge]: https://img.shields.io/coveralls/travelping/prometheus_diameter_collector/master.svg?style=flat-square
 [gh]: https://github.com/travelping/prometheus_diameter_collector/actions/workflows/main.yml
 [gh badge]: https://img.shields.io/github/workflow/status/travelping/prometheus_diameter_collector/CI?style=flat-square
-[erlang version badge]: https://img.shields.io/badge/erlang-R22.0%20to%2023.2-blue.svg?style=flat-square
+[erlang version badge]: https://img.shields.io/badge/erlang-22.0%20to%2023.2-blue.svg?style=flat-square
