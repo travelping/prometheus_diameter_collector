@@ -32,6 +32,11 @@ Type: gauge
 Labels: svc, peer, direction, type, msg, Result-Code.<br />
 Number of requests.
 
+* `diameter_errors`<br />
+  Type: gauge
+  Labels: svc, peer, error.<br />
+  Number of errors.
+
 ## License
 
 [Apache 2.0](LICENSE)

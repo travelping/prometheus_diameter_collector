@@ -31,7 +31,8 @@
 
 -define(METRICS, [{applications, gauge, "Number of installed DIAMETER applications."},
 		  {connections, gauge, "Number of connections to peers."},
-		  {messages, gauge, "Number of requests."}]).
+		  {messages, gauge, "Number of requests."},
+		  {errors, gauge, "Number of errors."}]).
 
 %%====================================================================
 %% Collector API
@@ -137,6 +138,9 @@ gather_statistics(SvcName, Peer, S, Apps, Stats) ->
 			      {type, msg_type(Msg)},
 			      {msg, msg_name(Msg, Apps)},
 			      {rc, Result}]], Cnt, S1);
+	 ({Error, Cnt}, S1) when is_atom(Error) ->
+	      add([errors,[{svc, SvcName}, {peer, Peer},
+			      {error, Error}]], Cnt, S1);
 	 (_, S1) ->
 	      S1
       end, Stats, S).
