@@ -43,8 +43,8 @@ Number of requests.
 
 <!-- Badges -->
 [hexpm]: https://hex.pm/packages/prometheus_diameter_collector
-[hexpm version]: https://img.shields.io/hexpm/v/prometheus_diameter_collector.svg?style=flat
-[hexpm downloads]: https://img.shields.io/hexpm/dt/prometheus_diameter_collector.svg?style=flat
+[hexpm version]: https://img.shields.io/hexpm/v/prometheus_diameter_collector.svg?style=flat-square
+[hexpm downloads]: https://img.shields.io/hexpm/dt/prometheus_diameter_collector.svg?style=flat-square
 [coveralls]: https://coveralls.io/github/travelping/prometheus_diameter_collector
 [coveralls badge]: https://img.shields.io/coveralls/travelping/prometheus_diameter_collector/master.svg?style=flat-square
 [gh]: https://github.com/travelping/prometheus_diameter_collector/actions/workflows/main.yml
