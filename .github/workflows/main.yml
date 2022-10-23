@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        otp: [22.3.4.16, 23.0.4, 23.1.5.0, 23.2.5.0]
+        otp: [22, 23, 24, 25]
     container:
       image: erlang:${{ matrix.otp }}-alpine
     steps:
@@ -24,7 +24,7 @@ jobs:
            apk --no-cache upgrade
            apk --no-cache add gcc git libc-dev libc-utils libgcc linux-headers make bash \
                               musl-dev musl-utils ncurses-dev pcre2 pkgconf scanelf wget zlib
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Build
       run: rebar3 compile
     - name: Run tests
@@ -38,7 +38,7 @@ jobs:
       run: DEBUG=1 rebar3 as test coveralls send || /bin/true
     - name: Archive Test Output
       if: ${{ always() }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: test-output-${{ matrix.otp }}
         path: |
