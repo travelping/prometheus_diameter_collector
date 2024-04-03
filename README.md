@@ -7,7 +7,7 @@ DIAMETER Prometheus.io collector
 [![Erlang Versions][erlang version badge]][gh]
 
 [Erlang Prometheus.io exporter](https://github.com/deadtrickster/prometheus.erl) for the
-Erlang/OTP DIAMTER Application
+Erlang/OTP DIAMETER Application
 
 Build
 -----
