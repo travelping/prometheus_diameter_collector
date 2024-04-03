@@ -7,7 +7,7 @@ DIAMETER Prometheus.io collector
 [![Erlang Versions][erlang version badge]][gh]
 
 [Erlang Prometheus.io exporter](https://github.com/deadtrickster/prometheus.erl) for the
-Erlang/OTP DIAMTER Application
+Erlang/OTP DIAMETER Application
 
 Build
 -----
@@ -48,5 +48,5 @@ Number of requests.
 [coveralls]: https://coveralls.io/github/travelping/prometheus_diameter_collector
 [coveralls badge]: https://img.shields.io/coveralls/travelping/prometheus_diameter_collector/master.svg?style=flat-square
 [gh]: https://github.com/travelping/prometheus_diameter_collector/actions/workflows/main.yml
-[gh badge]: https://img.shields.io/github/workflow/status/travelping/prometheus_diameter_collector/CI?style=flat-square
-[erlang version badge]: https://img.shields.io/badge/erlang-22.0%20to%2025.1-blue.svg?style=flat-square
+[gh badge]: https://img.shields.io/github/actions/workflow/status/travelping/prometheus_diameter_collector/main.yml?branch=master&style=flat-square
+[erlang version badge]: https://img.shields.io/badge/erlang-22.0%20to%2026.2-blue.svg?style=flat-square
