@@ -132,6 +132,9 @@ gather_statistics(SvcName, Peer, S, Apps, Stats) ->
 			      {type, msg_type(Msg)},
 			      {msg, msg_name(Msg, Apps)},
 			      {rc, RC}]], Cnt, S1);
+	 ({{_, _, error}, Cnt}, S1) ->
+              add([errors,[{svc, SvcName}, {peer, Peer},
+                           {error, unknown}]], Cnt, S1);
 	 ({{Msg, Direction, Result}, Cnt}, S1) when is_atom(Result) ->
 	      add([messages, [{svc, SvcName}, {peer, Peer},
 			      {direction, Direction},
