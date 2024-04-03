@@ -19,33 +19,33 @@
 %%% ==================================================================
 
 -export([
-    all/0,
-    groups/0,
-    init_per_suite/1,
-    end_per_suite/1
-]).
+         all/0,
+         groups/0,
+         init_per_suite/1,
+         end_per_suite/1
+        ]).
 
 %%% ==================================================================
 %%% Common Tests Info Callbacks Exports
 %%% ==================================================================
 
 -export([
-    diameter_applications/0,
-    diameter_connections/0,
-    diameter_messages/0,
-    gather_statistics/0
-]).
+         diameter_applications/0,
+         diameter_connections/0,
+         diameter_messages/0,
+         gather_statistics/0
+        ]).
 
 %%% ==================================================================
 %%% Common Tests Exports
 %%% ==================================================================
 
 -export([
-    diameter_applications/1,
-    diameter_connections/1,
-    diameter_messages/1,
-    gather_statistics/1
-]).
+         diameter_applications/1,
+         diameter_connections/1,
+         diameter_messages/1,
+         gather_statistics/1
+        ]).
 
 %%% ==================================================================
 %%% Includes
@@ -58,34 +58,34 @@
 %%% ==================================================================
 
 -define(match(Guard, Expr),
-    ((fun () ->
-        case (Expr) of
-            Guard ->
-                ok;
-            V ->
-                ct:pal("MISMATCH(~s:~b, ~s)~nExpected: ~p~nActual:   ~p~n",
-                [?FILE, ?LINE, ??Expr, ??Guard, V]),
-                error(badmatch)
-        end
-    end)())).
+        ((fun () ->
+                  case (Expr) of
+                      Guard ->
+                          ok;
+                      V ->
+                          ct:pal("MISMATCH(~s:~b, ~s)~nExpected: ~p~nActual:   ~p~n",
+                                 [?FILE, ?LINE, ??Expr, ??Guard, V]),
+                          error(badmatch)
+                  end
+          end)())).
 
 %%% ==================================================================
 %%% Common Tests Callbacks
 %%% ==================================================================
 
 all() ->
-  [
-    {group, collector}
-  ].
+    [
+     {group, collector}
+    ].
 
 groups() ->
     [
-        {collector, [sequence], [
-            diameter_applications,
-            diameter_connections,
-            diameter_messages,
-            gather_statistics
-        ]}
+     {collector, [sequence], [
+                              diameter_applications,
+                              diameter_connections,
+                              diameter_messages,
+                              gather_statistics
+                             ]}
     ].
 
 init_per_suite(Config) ->
@@ -132,7 +132,7 @@ gather_statistics(_Config) ->
          {{{unknown,0},recv,discarded},2618},
          {{{0,257,0},recv,{'Result-Code',2001}},1}],
     R = #{messages => #{
-        [{svc,testsvc}, {peer,<<"testpeer">>}, {direction,recv}, {type,answer}, {msg,'CEA'}, {rc,2001}] => 1,
-        [{svc,testsvc}, {peer,<<"testpeer">>}, {direction,recv}, {type,answer}, {msg,unknown}, {rc,discarded}] => 2618,
-        [{svc,testsvc}, {peer,<<"testpeer">>}, {direction,send}, {type,request}, {msg,'CER'}] => 1}},
+                        [{svc,testsvc}, {peer,<<"testpeer">>}, {direction,recv}, {type,answer}, {msg,'CEA'}, {rc,2001}] => 1,
+                        [{svc,testsvc}, {peer,<<"testpeer">>}, {direction,recv}, {type,answer}, {msg,unknown}, {rc,discarded}] => 2618,
+                        [{svc,testsvc}, {peer,<<"testpeer">>}, {direction,send}, {type,request}, {msg,'CER'}] => 1}},
     ?match(R, prometheus_diameter_collector:gather_statistics(testsvc, <<"testpeer">>, S, [], #{})).
